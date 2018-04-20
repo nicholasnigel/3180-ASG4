@@ -7,12 +7,18 @@ fun compare 0 0 = true
 
 val tuple1 = ("t1",3,5);
 val tuple2 = ("t2",4,6);
+val tasklist = [tuple1,tuple2];
 
-fun getString (name:string, startTime:int, endTime:int) = name
 
-fun getStartTime (name:string, startTime:int, endTime:int) = startTime
-
-fun getEndTime (name:string, startTime:int, endTime:int) = endTime
 
 fun numgen 0 = 0
     | numgen n = 2*n
+
+fun test (t(a,b,c)) = 1
+    
+
+  
+
+
+fun say what = what;
+

@@ -50,7 +50,6 @@ fun find_task(T:string, tasklist:(string*int*int)list):(string*int*int) =
       in (
         if T = name andalso startTime<endTime then task
         else find_task(T, tl(tasklist)) 
-        
         )
         
 
@@ -75,10 +74,36 @@ fun compatible(T1: string, T2: string, tasklist:(string*int*int)list):bool =
 
         end
     
-    else false 
+    else false ;
 
 
-val tasklist = [("t2",3,6), ("t3",5,7)];
+(* Check whether each task in the task list is compatible with all other task, *)
+(* in imperative programming, it should be implemented with 2 for loop for i=0 ;i<n-1;i++ and for j=i+1;j<n;j++ *)
+
+fun compatible_list(L: string list, tasklist: (string*int*int) list):bool =
+
+    if null L then true
+     else
+    let 
+        val remaining = tl L
+        val head = hd L
+        (* compare stable and tail *)
+        fun compt(stable: string, tail: string list, tasklist: (string*int*int) list):bool = 
+            if null tail then true
+            else if compatible(stable, hd tail, tasklist) = true then compt(stable, tl tail, tasklist)
+            else false
+    
+    in (
+        if compt(head,remaining,tasklist) = false then false
+        else compatible_list(remaining, tasklist)
+    
+    )
+    end
+
+
+(* sample testcases *)
+val tasklist = [("t1",0,1),("t2",2,4), ("t3",5,7),("t4",3,30)];
+val listname = ["t1","t2","t3","t4"];
 val T = "t2";
 val T1 = "t2";
 val T2 = "t3";
