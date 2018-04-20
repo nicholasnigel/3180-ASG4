@@ -11,8 +11,8 @@
 (*  http://www.cuhk.edu.hk/policy/academichonesty/ *)
 (* *)
 (*  Assignment 4 *)	
-(*  Name : Saswiko Karyono Jo *)
-(*  Student ID : 1155074594 *)
+(*  Name : Nigel Nicholas *)
+(*  Student ID : 1155088791 *)
 (*  Email Addr : 1155088791@link.cuhk.edu.hk *)
 
 (*                      List.nth( list, num) 
@@ -54,6 +54,8 @@ fun find_task(T:string, tasklist:(string*int*int)list):(string*int*int) =
         
 
       end
+
+
 (* 1(b) *)
 fun compatible(T1: string, T2: string, tasklist:(string*int*int)list):bool =
     (* check whether T1 and T2 exist, if not return false immediately, else find this 2 task *)
@@ -80,6 +82,7 @@ fun compatible(T1: string, T2: string, tasklist:(string*int*int)list):bool =
 (* Check whether each task in the task list is compatible with all other task, *)
 (* in imperative programming, it should be implemented with 2 for loop for i=0 ;i<n-1;i++ and for j=i+1;j<n;j++ *)
 
+(* 1(c) *)
 fun compatible_list(L: string list, tasklist: (string*int*int) list):bool =
 
     if null L then true
@@ -87,10 +90,13 @@ fun compatible_list(L: string list, tasklist: (string*int*int) list):bool =
     let 
         val remaining = tl L
         val head = hd L
+
+
         (* compare stable and tail *)
-        fun compt(stable: string, tail: string list, tasklist: (string*int*int) list):bool = 
+        (* stable is the element that does not move while doing inner loop. Used to compare this element with the next of the list *)
+        fun compare(stable: string, tail: string list, tasklist: (string*int*int) list):bool = 
             if null tail then true
-            else if compatible(stable, hd tail, tasklist) = true then compt(stable, tl tail, tasklist)
+            else if compatible(stable, hd tail, tasklist) = true then compare(stable, tl tail, tasklist)
             else false
     
     in (
@@ -101,7 +107,7 @@ fun compatible_list(L: string list, tasklist: (string*int*int) list):bool =
     end
 
 
-(* sample testcases *)
+(* sample testcases: use the following *)
 val tasklist = [("t1",0,1),("t2",2,4), ("t3",5,7),("t4",3,30)];
 val listname = ["t1","t2","t3","t4"];
 val T = "t2";
