@@ -7,7 +7,11 @@ task(t4, 8, 9).
 task(t5, 1, 10).
 task(t6, 10, 1).
 
-
+hd([X|_],X).
+hdoftl([_|[X|_]],X).
+tl([_|X],X).
+list_empty([], true).
+list_empty([_|_], false).
 
 notoverlap(T1,T2):-
     task(T1,_start1,_end1),
@@ -26,12 +30,40 @@ compatible(T1,T2):-
 /* example query: compatible(t1, t2); 
    result: yes */
     check_task(T1),
-    check_task(T2),
+    check_task(T2), 
     (notoverlap(T1,T2);notoverlap(T2,T1)).
     
 
 /* 1c */
-%compatible_list()
+compatible_list(L):-
 /* example query: compatible_list([t1, t2, t3]);   
    result: no */
 
+   /* Algorithm: 
+        check compatibility with one another,
+        if length of the remaining tail is 0 just return true
+        else if not , you have to do the recursive function of list  */
+    
+    length(L, _len),
+    (_len>0 ->
+        hd(L,_head),    
+        tl(L,_tail),    
+        compat(_head,_tail),
+        compatible_list(_tail),
+        true
+    ; true 
+    ).
+
+    
+
+
+compat(Head, L):-
+/* compat is to check a stable card with the remaining of the list  */
+    length(L,_len),
+    ( _len > 0 ->
+        hd(L,_header),
+        tl(L,_ending),
+        compatible(Head,_header),
+        compat(Head,_ending),
+        true
+    ; true).

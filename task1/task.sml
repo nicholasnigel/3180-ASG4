@@ -107,7 +107,7 @@ fun compatible_list(L: string list, tasklist: (string*int*int) list):bool =
     end
 
 
-(* sample testcases: use the following *)
+(* sample testcases: use the following  *)
 val tasklist = [("t1",0,1),("t2",2,4), ("t3",5,7),("t4",3,30)];
 val listname = ["t1","t2","t3","t4"];
 val T = "t2";
