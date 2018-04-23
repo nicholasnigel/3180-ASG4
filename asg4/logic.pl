@@ -32,8 +32,12 @@ product(s(X),Y,Z) :- add(Y,Y,_sum),
 /* product(Result,4,8). */
 
 /* 2a */
-%nth()
+nth(X,[X|_],1).
+nth(X,[_|T],N) :- New is N-1,
+                    nth(X,T,New).
+
+
 
 /* 2b */
-%third()
+third(X,L) :- nth(X,L,3).
 
