@@ -100,7 +100,7 @@ fun compatible_list(L: string list, tasklist: (string*int*int) list):bool =
             else false
     
     in (
-        if compt(head,remaining,tasklist) = false then false
+        if compare(head,remaining,tasklist) = false then false
         else compatible_list(remaining, tasklist)
     
     )
@@ -108,7 +108,7 @@ fun compatible_list(L: string list, tasklist: (string*int*int) list):bool =
 
 
 (* sample testcases: use the following  *)
-val tasklist = [("t1",0,1),("t2",2,4), ("t3",5,7),("t4",3,30)];
+val tasklist = [("t1",0,1),("t2",2,4), ("t3",5,7),("t4",8,30)];
 val listname = ["t1","t2","t3","t4"];
 val T = "t2";
 val T1 = "t2";
