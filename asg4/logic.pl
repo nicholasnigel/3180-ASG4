@@ -1,10 +1,12 @@
 /* Insert header here */
 
 /* 1a */
-uint_num()
+uint_num(0).
+unit_num(s(X)):- unit_num(X).
 
 /* 1b */
 gt()
+
 
 /* 1c */
 /* Your query */
