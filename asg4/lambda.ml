@@ -20,6 +20,6 @@
 (* 2c *)
 fun f x y = x*(y+3);
 
-fun f x y = 
+
 (* Example query: f 7 8 *)
 

@@ -18,7 +18,7 @@
 
 /* 1a */
 uint_num(0).
-uint_num(s(X)):- unit_num(X).
+uint_num(s(X)):- uint_num(X).
 
 /* 1b */
 
@@ -48,7 +48,7 @@ product(s(X),Y,Z) :- add(_sum,Y,Z),
 
 /* 1f */
 /* Your query */
-/* product(Result,4,8). */
+/* product(Result,s(s(s(s(0))),s(s(s(s(s(s(s(s(0))))))))). */
 
 /* 2a */
 nth(X,[X|_],1).
