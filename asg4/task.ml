@@ -32,7 +32,7 @@ fun check_task(T :string, tasklist :(string*int*int)list):bool =
            val startTime = #2 task
            val endTime = #3 task
       in (
-        if T = name andalso startTime<endTime then true
+        if T = name andalso startTime<=endTime then true
         else check_task(T, tl(tasklist)) 
         
         )
@@ -68,8 +68,8 @@ fun compatible(T1: string, T2: string, tasklist:(string*int*int)list):bool =
             val startTime_task2 = #2 task2
             val endTime_task2 = #3 task2
         in (
-            if startTime_task1 < startTime_task2 andalso endTime_task1<startTime_task2 then true
-            else if startTime_task2 < startTime_task1 andalso endTime_task2<startTime_task1 then true
+            if startTime_task1 <= startTime_task2 andalso endTime_task1<=startTime_task2 then true
+            else if startTime_task2 <= startTime_task1 andalso endTime_task2<=startTime_task1 then true
             else false
 
         )
@@ -108,7 +108,7 @@ fun compatible_list(L: string list, tasklist: (string*int*int) list):bool =
 
 
 (* sample testcases: use the following  *)
-val tasklist = [("t1",0,1),("t2",2,4), ("t3",5,7),("t4",8,30)];
+val tasklist = [("t1",0,1),("t2",0,4), ("t3",5,7),("t4",8,30)];
 val listname = ["t1","t2","t3","t4"];
 val T = "t2";
 val T1 = "t2";

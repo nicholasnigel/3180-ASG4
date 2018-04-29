@@ -17,10 +17,13 @@ add(0, X, X).
 add(s(N), X, s(Y)) :- add(N, X, Y).
 
 /* 1d */
-product(s(0),Y,Y).
-%product(s(X),Y,Z):-product(X,add(Y,Y,Sum),Z).
-product(s(X),Y,Z) :- add(Y,Y,_sum),
-                     product(X,_sum,Z).
+
+
+product(0,X,0).
+product(X,0,0).
+
+product(s(X),Y,Z) :- add(_sum,Y,Z),
+                     product(X,Y,_sum).
 
 /* 1e */
 /* Your query */
@@ -33,9 +36,10 @@ product(s(X),Y,Z) :- add(Y,Y,_sum),
 
 /* 2a */
 nth(X,[X|_],1).
-nth(X,[_|T],N) :- New is N-1,
-                    nth(X,T,New).
 
+nth(X,[_|T],N) :-  nth(X,T,N1), N is N1 + 1.
+
+    
 
 
 /* 2b */
