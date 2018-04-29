@@ -15,9 +15,17 @@
 (*  Student ID : 1155088791 *)
 (*  Email Addr : 1155088791@link.cuhk.edu.hk *)
 
+
 (*                      List.nth( list, num) 
     to access numth element of the list, starting with 0           *)
-
+    val tasks = [
+        ("t1", 2, 4),
+        ("t2", 4, 6),
+        ("t3", 3, 7),
+        ("t4", 8, 9),
+        ("t5", 1, 10),
+        ("t6", 10, 1)
+      ];
 
 
 (*1(a)*)
@@ -107,9 +115,4 @@ fun compatible_list(L: string list, tasklist: (string*int*int) list):bool =
     end
 
 
-(* sample testcases: use the following  *)
-val tasklist = [("t1",0,1),("t2",0,4), ("t3",5,7),("t4",8,30)];
-val listname = ["t1","t2","t3","t4"];
-val T = "t2";
-val T1 = "t2";
-val T2 = "t3";
+  
